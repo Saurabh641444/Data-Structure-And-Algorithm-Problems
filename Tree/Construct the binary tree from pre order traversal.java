@@ -11,7 +11,7 @@ class Solution {
      TreeNode root=new TreeNode(value);
 
      int i=rootindex+1;
-     while(i<=preorder.length-1&&preorder[i] <value){ i++;}// this loop is for dividing the treee
+     while(i<=preorder.length-1&&preorder[i] <value){ i++;}// this loop is for dividing the tree
          
      root.left=helper(preorder,rootindex+1,i);
      root.right=helper(preorder,i,right);
