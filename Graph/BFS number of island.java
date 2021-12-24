@@ -8,6 +8,7 @@ int x,y;
 }
 
 class Solution{
+   //bfs
        int n,m;
     public int numIslands(char[][] grid){
      n=grid.length;
