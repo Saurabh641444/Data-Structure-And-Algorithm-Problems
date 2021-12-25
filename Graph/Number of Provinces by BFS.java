@@ -1,4 +1,5 @@
 class Solution {
+    //BFS solution
     public int findCircleNum(int[][] adj_mat) {
         int v=adj_mat.length;
        boolean visited[]=new boolean[v];
