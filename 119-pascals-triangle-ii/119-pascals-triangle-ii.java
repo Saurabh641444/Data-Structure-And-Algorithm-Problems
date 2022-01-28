@@ -1,5 +1,7 @@
 class Solution {
     public List<Integer> getRow(int rowIndex) {
+        
+        /* Here I can see we have given the rowIndex, so i simple create pascal triangle for two rows then with the help of 1 row I will create another triangles  */
         List<Integer> res=new ArrayList<>();
         
         if(rowIndex==0){
