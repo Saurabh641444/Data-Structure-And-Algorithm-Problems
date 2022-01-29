@@ -92,7 +92,7 @@ class Solution
       if(N==0||W==0) return 0;
 
      if(t[N][W]!=-1){
-       return t[N][W];
+      return t[N][W];
         }
        
     if(wt[N-1]<=W){
@@ -100,8 +100,39 @@ class Solution
      }
 else{
     return t[N][W]=Memo(W,wt,val,N-1,t);
-   }
+  }
 
     }
    
 }
+
+// class Solution 
+// { 
+    
+//     //Function to return max value that can be put in knapsack of capacity W.
+//     static int knapSack(int W, int wt[], int val[], int N) 
+//     {        // code here for memoization method by using hashmap
+//      HashMap<String,Integer> map=new HashMap<>();
+//         return Memo(W,wt,val,0,map);
+//     } 
+   
+//  static int Memo(int W,int wt[],int val[],int i, HashMap<String,Integer> map){
+//       if(i==wt.length||W==0) return 0;
+
+//     String key=W+"#"+i;
+
+//      if(map.containsKey(key)){
+//   return map.get(key);
+//      }
+       
+//     if(wt[i]>W){
+//          return Memo(W,wt,val,i+1,map);
+          
+//      }
+// else{
+//   return Math.max(val[i]+Memo(W-wt[i],wt,val,i+1,map),Memo(W,wt,val,i+1,map));
+//   }
+
+//     }
+   
+// }
