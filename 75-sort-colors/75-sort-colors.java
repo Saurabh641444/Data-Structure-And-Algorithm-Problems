@@ -1,6 +1,8 @@
 class Solution {
     public void sortColors(int[] nums) {
-        // Arrays.sort(nums);
+        // Arrays.sort(nums); // time complexity O(NlogN)
+        
+        /*Dutch National Flag Algorithm O(N)*/
         int lo=0;
         int mid=0;
         int hi=nums.length-1;
