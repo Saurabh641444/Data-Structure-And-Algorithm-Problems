@@ -49,23 +49,25 @@ class Solution {
      int e=p.length()-1;
      List<Integer> ans=new ArrayList<Integer>();
      if(p.length()>s.length()|| st>e){ return ans;}
-     HashMap<Character,Integer> hms=new HashMap<>();
-     HashMap<Character,Integer> hmp=new HashMap<>();
+     HashMap<Character,Integer> hms=new HashMap<>();//create HashMap for first string
+     HashMap<Character,Integer> hmp=new HashMap<>();// create the HashMap for secoind string
      
+        // put the characters in the second string
      for(int i=0;i<p.length();i++){
       char ch=p.charAt(i);
       hmp.put(ch,hmp.getOrDefault(ch,0)+1);
           }
 
+        // put the character in the first stying
       for(int i=0;i<=e;i++){
       char ch=s.charAt(i);
       hms.put(ch,hms.getOrDefault(ch,0)+1);
           }
       
-      if(hms.equals(hmp)) ans.add(st);
+      if(hms.equals(hmp)) ans.add(st); // if both hashMap are equal then add character start index in the ans  
     
       st++;e++;
-      while(e<s.length()){
+      while(e<s.length()){ // end pointer should be less than length of first string
         //add key for e
         char ch=s.charAt(e);
         hms.put(ch,hms.getOrDefault(ch,0)+1);
