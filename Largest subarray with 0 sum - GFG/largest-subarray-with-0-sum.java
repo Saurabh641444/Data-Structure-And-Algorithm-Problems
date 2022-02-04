@@ -48,6 +48,16 @@ class MaxLenZeroSumSub
 //     }
 // }
 
+/*Algorithm:  
+
+Create an extra space, an array of length n (prefix), a variable (sum), length (max_len), and a hash map (hm) to store the sum-index pair as a key-value pair.
+Move along the input array from the start to the end.
+For every index, update the value of sum = sum + array[i].
+Check every index, if the current sum is present in the hash map or not.
+If present, update the value of max_len to a maximum difference of two indices (current index and index in the hash-map) and max_len.
+Else, put the value (sum) in the hash map, with the index as a key-value pair.
+Print the maximum length (max_len).*/
+
 class GfG
 {
     // Approach by using HashMap Space O(N) time O(N)
