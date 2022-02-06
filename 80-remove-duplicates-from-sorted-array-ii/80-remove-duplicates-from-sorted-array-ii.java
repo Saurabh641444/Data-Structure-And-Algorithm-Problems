@@ -7,6 +7,6 @@ class Solution {
           i+=1;
     }
           }
-       return i;
+       return i;//spacevO(1)
     }
 }
