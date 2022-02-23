@@ -52,5 +52,23 @@ class Solution {
         }
         
         return count;
+        // int count=1;
+        // Arrays.sort(arr);
+        // int left=0;
+        // int right=n-1;
+        // while(left<right){
+        // if(arr[left]+arr[right]<k){
+        //     left++;
+        // }
+        // else if (arr[left]+arr[right]>k){
+        //     right--;
+        // }
+        // // if(arr[left]+arr[right]==k)
+        // else{
+        //     left++;
+        //     right--;
+        //     count++;
+        // }}
+        // return count;
     }
 }
