@@ -64,21 +64,42 @@ class Node {
 
 */
 
+// class Solution
+// {
+//     //Function to reverse a linked list.
+//     Node reverseList(Node head)
+//     {
+//         // code here
+//         Node prev=null;
+//         Node curr=head;
+//         while(curr!=null){
+//           Node temp=curr.next;
+//           curr.next=prev;
+//           prev=curr;
+//           curr=temp;
+          
+//         }
+//         return prev;
+//     }
+// }
+
 class Solution
 {
     //Function to reverse a linked list.
+    Node reverse(Node curr, Node prev){
+        if(curr==null) return null;
+        if(curr.next==null){
+            curr.next=prev;
+            return curr;
+        }
+        Node result=reverse(curr.next,curr);
+        curr.next=prev;
+        return result;
+    }
     Node reverseList(Node head)
     {
         // code here
-        Node prev=null;
-        Node curr=head;
-        while(curr!=null){
-          Node temp=curr.next;
-          curr.next=prev;
-          prev=curr;
-          curr=temp;
-          
-        }
-        return prev;
+        return reverse(head,null);
     }
 }
+
