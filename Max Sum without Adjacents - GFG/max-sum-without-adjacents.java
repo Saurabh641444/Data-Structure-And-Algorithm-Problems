@@ -35,8 +35,7 @@ class Solution {
         int inc=arr[0];
         int exc=0;
         
-        // int[] count=new int[1000001];
-        // for(int val:arr) count[val]++;
+      
         for(int i=1;i<n;i++){
             int new_inc=exc+arr[i];
             int new_exc=Math.max(inc,exc);
