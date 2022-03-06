@@ -31,18 +31,55 @@ import java.util.*;
 //       return count==N-1 ? true:false;
 //     }
 // }
+// class Solution
+// {
+//     boolean areConsecutives(long arr[], int N)
+//     {
+
+//     int min=getmin(arr,N);
+//     int num=0;
+//     for(int i=0;i<N;i++){
+//          num^=min^arr[i];
+//          min+=1;
+//           }
+//       return num==0? true:false;
+//     }
+//     int getmin(long[] arr,int n){
+//           int min=(int)arr[0];
+//       for(int i=1;i<n;i++){
+
+//             min=Math.min((int)arr[i],min);
+//               }
+//           return min;
+//          }
+
+//      int getmax(long[] arr,int n){
+//           int max=(int)arr[0];
+//       for(int i=1;i<n;i++){
+
+//             max=Math.max((int)arr[i],max);
+//               }
+//           return max;
+//          }
+// }
+
 class Solution
 {
     boolean areConsecutives(long arr[], int N)
     {
-
+     if(N<1) return false;
     int min=getmin(arr,N);
-    int num=0;
-    for(int i=0;i<N;i++){
-         num^=min^arr[i];
-         min+=1;
-           }
-       return num==0? true:false;
+    int max=getmax(arr,N);
+    if(max-min+1==N){
+        boolean visited[] =new boolean[N];
+        int i;
+        for( i=0;i<N;i++){
+             if(visited[(int)arr[i]-min]!=false){ return false;}
+             visited[(int)arr[i]-min]=true;
+            }
+          return true;
+            }
+        return false;
     }
     int getmin(long[] arr,int n){
            int min=(int)arr[0];
@@ -53,7 +90,7 @@ class Solution
           return min;
          }
 
-     int getmax(int[] arr,int n){
+     int getmax(long[] arr,int n){
            int max=(int)arr[0];
        for(int i=1;i<n;i++){
 
