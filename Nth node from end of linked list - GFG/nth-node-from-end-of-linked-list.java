@@ -97,19 +97,32 @@ class GfG
     int getNthFromLast(Node head, int n)
     {
     	// Your code here
-    	Node h=head;
-    	int previousValue=0;
-    	int counter=1;
+    // 	Node h=head;
+    // 	int previousValue=0;
+    // 	int counter=1;
     	
-    	ArrayList<Integer> list=new ArrayList<Integer>();
-    	while(h.next!=null){
-    	    list.add(h.data);
-    	    h=h.next;
-    	}
-    	list.add(h.data);
-    	if(list.size()<n){
-    	return -1;}
-    	return list.get(list.size()-n);
-    	
+    // 	ArrayList<Integer> list=new ArrayList<Integer>();
+    // 	while(h.next!=null){
+    // 	    list.add(h.data);
+    // 	    h=h.next;
+    // 	}
+    // 	list.add(h.data);
+    // 	if(list.size()<n){
+    // 	return -1;}
+    // 	return list.get(list.size()-n);
+    Node curr=head;
+    int len=0;
+    while(curr!=null){
+        curr=curr.next;
+        len++;
+        
+    }
+     
+     if(n>len){ return -1;}
+     for(int i=0;i<len-n;i++){
+         head=head.next;
+         
+     }
+    	return head.data;
     }
 }
