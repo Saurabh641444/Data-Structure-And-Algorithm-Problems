@@ -14,7 +14,7 @@ import java.util.*;
 //User function Template for Java
 
 
-
+/*Time complexity O(nlogn) Space Complexity O(1)*/
 // class Solution
 // {
 //     boolean areConsecutives(long arr[], int N)
@@ -31,6 +31,8 @@ import java.util.*;
 //       return count==N-1 ? true:false;
 //     }
 // }
+
+// /*Time Complexity O(n) Space Complexity O(1)*/
 // class Solution
 // {
 //     boolean areConsecutives(long arr[], int N)
@@ -62,6 +64,8 @@ import java.util.*;
 //           return max;
 //          }
 // }
+
+/*Time Complexity O(n) Space Complexity O(n)*/
 
 class Solution
 {
