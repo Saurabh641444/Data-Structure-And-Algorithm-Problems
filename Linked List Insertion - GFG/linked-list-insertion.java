@@ -73,13 +73,14 @@ class Solution
     {
         // code here
         Node temp=head;
-      while(temp!=null && temp.next!=null){
-            temp=temp.next;
-            }
+      
 
        Node newNode=new Node(x);
        if(temp==null){
            return newNode;
+            }
+       while(temp!=null && temp.next!=null){
+            temp=temp.next;
             }
      temp.next=newNode;
      return head;
