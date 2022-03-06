@@ -15,23 +15,53 @@ import java.util.*;
 
 
 
+// class Solution
+// {
+//     boolean areConsecutives(long arr[], int N)
+//     {
+
+//       Arrays.sort(arr);
+//       int count=0;
+//       for(int i=1;i<N;i++){
+//           if(arr[i]-arr[i-1]==1){
+//               count++;
+//           }
+//       }
+      
+//       return count==N-1 ? true:false;
+//     }
+// }
 class Solution
 {
     boolean areConsecutives(long arr[], int N)
     {
 
-      Arrays.sort(arr);
-      int count=0;
-      for(int i=1;i<N;i++){
-          if(arr[i]-arr[i-1]==1){
-              count++;
-          }
-      }
-      
-      return count==N-1 ? true:false;
+    int min=getmin(arr,N);
+    int num=0;
+    for(int i=0;i<N;i++){
+         num^=min^arr[i];
+         min+=1;
+           }
+       return num==0? true:false;
     }
-}
+    int getmin(long[] arr,int n){
+           int min=(int)arr[0];
+       for(int i=1;i<n;i++){
 
+            min=Math.min((int)arr[i],min);
+              }
+          return min;
+         }
+
+     int getmax(int[] arr,int n){
+           int max=(int)arr[0];
+       for(int i=1;i<n;i++){
+
+            max=Math.max((int)arr[i],max);
+              }
+          return max;
+         }
+}
 
 // { Driver Code Starts.
 
