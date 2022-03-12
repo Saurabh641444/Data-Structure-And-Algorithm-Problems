@@ -17,6 +17,6 @@ class Solution {
          water[i]=Math.min(mxL[i],mxR[i])-height[i];
         sum+=water[i];
         }
-        return sum;
+        return sum;//o(n)
     }
 }
