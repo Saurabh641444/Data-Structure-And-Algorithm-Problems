@@ -10,10 +10,11 @@ class Solution {
                      stack.push(t);
                     }
             }
-          StringBuilder sb=new StringBuilder();
-          for(String s:stack){
-               sb.append("/").append(s);
-               }
-          return sb.length()==0 ?"/":sb.toString();
+          // StringBuilder sb=new StringBuilder();
+          // for(String s:stack){
+          //      sb.append("/").append(s);
+          //      }
+          // return sb.length()==0 ?"/":sb.toString();
+         return "/"+String.join("/",stack);
     }
 }
