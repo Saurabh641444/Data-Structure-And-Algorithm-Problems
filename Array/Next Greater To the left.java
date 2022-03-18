@@ -33,11 +33,27 @@ class GFG {
     }
     
 }
+	private static void NGL2(int[] arr,int n){
+       TreeSet<Integer> ts=new TreeSet<>();
+       for(int i=0;i<n;i++){
+           Integer c=ts.ceiling(arr[i]);
+           
+           if(c==null){
+               System.out.print(-1+" ");
+           }
+           else{
+               System.out.print(c+" "); 
+           }
+           ts.add(arr[i]);
+       }
+   }
+
 
 	public static void main (String[] args) {
 // 		System.out.println("GfG!");
 
      int [] arr=new int[]{1,3,2,4};
 		NGL(arr,arr.length);
+		NGL2(arr,arr.length);
 	}
 }
