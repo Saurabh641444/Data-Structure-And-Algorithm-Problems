@@ -47,7 +47,7 @@ class FreqStack {
             maxFreq--;
          }
         freq.put(x,freq.getOrDefault(x,0)-1);
-         return x;
+         return x;//o(1)tc
     }
 }
 
