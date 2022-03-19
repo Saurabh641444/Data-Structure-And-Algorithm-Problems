@@ -53,30 +53,31 @@ class Solution
         // Your code here
     
     Stack<Pair> st=new Stack<Pair>();
-    ArrayList<Integer> list=new ArrayList<>();
+    // ArrayList<Integer> list=new ArrayList<>();
+    int[] ans=new int[n];
     for(int i=0;i<n;i++){
         if(st.isEmpty()){
-            list.add(i-(-1));
+        ans[i]= i+1;
         }
         else if(!st.isEmpty() && st.peek().value>price[i]){
-            list.add(i-st.peek().key);
+            ans[i]=i-st.peek().key;
         }else if(!st.isEmpty() && st.peek().value<=price[i]){
             while(!st.isEmpty() && st.peek().value<=price[i]){st.pop();}
             if(st.isEmpty()){
-            list.add(i-(-1));
+             ans[i]= i+1;
         }
         else if(!st.isEmpty() && st.peek().value>price[i]){
-            list.add(i-st.peek().key);
+             ans[i]=i-st.peek().key;
         }
         }
         Pair p=new Pair(i,price[i]);
         st.push(p);
     }
     
-    int[] ans=new int[n];
-    for(int i=0;i<n;i++){
-        ans[i]=list.get(i);
-    }
+    
+    // for(int i=0;i<n;i++){
+    //     ans[i]=list.get(i);
+    // }
     
     return ans;
     
