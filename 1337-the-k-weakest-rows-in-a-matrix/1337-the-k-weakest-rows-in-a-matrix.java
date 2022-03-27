@@ -64,13 +64,13 @@ class Solution {
       
       int[] res=new int[k];
       for(int i=0;i<mat.length;i++){
-               int count1=0;
+               int Soldier_count=0;
          for(int j=0;j<mat[0].length;j++){
               if(mat[i][j]==1){
-                     count1++;
+                     Soldier_count++;
                   }else break;
             }
-           count[i]=count1*1000+i;
+           count[i]=Soldier_count*1000+i;
          }
       
       Arrays.sort(count);
