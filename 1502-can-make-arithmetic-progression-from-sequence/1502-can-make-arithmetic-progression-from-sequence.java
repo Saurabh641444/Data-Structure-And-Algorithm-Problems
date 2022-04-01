@@ -1,12 +1,13 @@
 class Solution {
     public boolean canMakeArithmeticProgression(int[] arr) {
-        HashSet<Integer> set=new HashSet<>();
+        // HashSet<Integer> set=new HashSet<>();
         Arrays.sort(arr);
-        for(int i=1;i<arr.length;i++){
-            int d=arr[i]-arr[i-1];
-            set.add(d);
+        int d=arr[1]-arr[0];
+        for(int i=2;i<arr.length;i++){
+            if(arr[i]-arr[i-1]!=d) return false;
+            // set.add(d);
         }
         
-        return set.size()==1? true:false;
+        return true;
     }
 }
