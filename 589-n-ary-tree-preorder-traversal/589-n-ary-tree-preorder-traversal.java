@@ -17,22 +17,36 @@ class Node {
 };
 */
 
-class Solution {
-    public List<Integer> preorder(Node root) {
-        LinkedList<Integer> list=new LinkedList<>();
-        preorder(list,root);
-        return list;
-    }
+// class Solution {
+//     public List<Integer> preorder(Node root) {
+//         LinkedList<Integer> list=new LinkedList<>();
+//         preorder(list,root);
+//         return list;
+//     }
     
-     public List<Integer> preorder( List<Integer> list,Node root) {
-        if(root==null){
-            return list;
-        }
-         list.add(root.val);
-         for(Node n:root.children){
-             list=preorder(list,n);
-         }
+//      public List<Integer> preorder( List<Integer> list,Node root) {
+//         if(root==null){
+//             return list;
+//         }
+//          list.add(root.val);
+//          for(Node n:root.children){
+//              list=preorder(list,n);
+//          }
          
-         return list;
+//          return list;
+//     }
+// }
+
+class Solution {
+    public List<Integer> list = new ArrayList<>();
+    public List<Integer> preorder(Node root) {
+        if (root == null)
+            return list;
+        
+        list.add(root.val);
+        for(Node node: root.children)
+            preorder(node);
+                
+        return list;
     }
 }
