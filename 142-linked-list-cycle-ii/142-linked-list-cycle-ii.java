@@ -24,7 +24,7 @@ public class Solution {
                     slow=slow.next;
                     temp=temp.next;
                 }
-                return slow;
+                return slow;//TC O(N) SC O(1)
             }
         }
         
@@ -41,6 +41,6 @@ public class Solution {
              set.add(head);
              head=head.next;
          }
-         return null;
+         return null;// TC O(N) SC O(N)
     }
 }
