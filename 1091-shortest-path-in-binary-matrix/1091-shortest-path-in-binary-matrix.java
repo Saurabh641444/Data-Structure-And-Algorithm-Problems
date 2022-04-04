@@ -5,7 +5,7 @@ class Solution {
         int n=grid[0].length;
        
         Queue<int[]> q=new LinkedList<>();
-         q.add(new int[] {0,0,1});
+         q.add(new int[] {0,0,1});//m,n,steps
           grid[0][0]=1;
          
          int[][] dir={{0,1},{1,0},{0,-1},{-1,0},{1,1},{1,-1},{-1,1},{-1,-1}};
