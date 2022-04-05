@@ -6,5 +6,7 @@ class Solution {
             res^=t.charAt(i);
         }
         return res;
+        
+        
     }
 }
