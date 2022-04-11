@@ -21,7 +21,7 @@ repeat.equals(s.substring(i,i+repeat.length()))){
       }
 }*/
 
-class Solution {
+/*class Solution {
     public boolean repeatedSubstringPattern(String s) {
      
          int n=s.length();
@@ -38,5 +38,11 @@ class Solution {
        
         }
          return false;
+      }
+}*/
+
+class Solution {
+    public boolean repeatedSubstringPattern(String s) {
+return (s+s).substring(1,2*s.length()-1).contains(s);
       }
 }
