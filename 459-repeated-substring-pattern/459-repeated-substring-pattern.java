@@ -1,4 +1,4 @@
-class Solution {
+/*class Solution {
     public boolean repeatedSubstringPattern(String s) {
     if(s.length()==0 || s.length()==1) return false;
     
@@ -18,5 +18,25 @@ repeat.equals(s.substring(i,i+repeat.length()))){
                }
              }
        return true;
+      }
+}*/
+
+class Solution {
+    public boolean repeatedSubstringPattern(String s) {
+     
+         int n=s.length();
+       
+        for(int j=n/2;j>0;j--){
+            if(n%j==0){
+            int i=0;
+           while(j+i<n&& s.charAt(i)==s.charAt(j+i))
+              i++;
+           if(j+i==n){ return true;}
+           
+        }
+        
+       
+        }
+         return false;
       }
 }
