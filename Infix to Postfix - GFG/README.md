@@ -1,5 +1,5 @@
 # Infix to Postfix
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given an infix expression in the form of string <strong>str</strong>. Convert this infix expression to postfix expression.</span></p>
 
