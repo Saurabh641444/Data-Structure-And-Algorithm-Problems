@@ -45,94 +45,36 @@ class gfg
 // } Driver Code Ends
 
 
-
-// class Solution 
-// { 
-    
-//     //Function to return max value that can be put in knapsack of capacity W.
-//     static int knapSack(int W, int wt[], int val[], int N) 
-//     {        // code here
-//         int[][] t=new int[N+1][W+1];
-//         for(int i=0;i<=N;i++){ t[i][0]=0;}
-//             for(int i=1;i<=W;i++){
-              
-//                 t[0][i]=0;
-//             }
-        
-//         for(int i=1;i<=N;i++){
-//             for(int j=1;j<=W;j++){
-//                 if(wt[i-1]<=j){
-//                     t[i][j]=Math.max(val[i-1]+t[i-1][j-wt[i-1]], t[i-1][j]);
-//                 }
-//                 else{
-//                     t[i][j]=t[i-1][j];
-//                 }
-//             }
-//         }
-//         return t[N][W];
-//     } 
-// }
-
 class Solution 
 { 
-    
     //Function to return max value that can be put in knapsack of capacity W.
-    static int knapSack(int W, int wt[], int val[], int N) 
-    {        // code here
-        int[][] t=new int[N+1][W+1];
-        for(int i=0;i<=N;i++){ 
-            for(int j=0;j<=W;j++){
-              
-                t[i][j]=-1;
-            }}
-        return Memo(W,wt,val,N,t);
+   static  int t[][]=new int[1000][1000];
+  
+    static int knapSack(int W, int wt[], int val[], int n) 
+    { 
+         // your code here 
+         for(int []row:t){
+             Arrays.fill(row,-1);
+         }
+         
+         return solve(W,wt,val,n);
     } 
-   
- static int Memo(int W,int wt[],int val[],int N, int t[][]){
-      if(N==0||W==0) return 0;
-
-     if(t[N][W]!=-1){
-      return t[N][W];
+    
+    private static int solve(int W,int wt[],int val[],int n){
+        if(n==0||W==0){
+            return 0;
         }
-       
-    if(wt[N-1]<=W){
-          return t[N][W]=Math.max(val[N-1]+Memo(W-wt[N-1],wt,val,N-1,t),Memo(W,wt,val,N-1,t));
-     }
-else{
-    return t[N][W]=Memo(W,wt,val,N-1,t);
-  }
-
+        
+        if(t[n][W]!=-1){
+            return t[n][W];
+        }
+        
+        if(wt[n-1]<=W){
+            return t[n][W]=Math.max(val[n-1]+solve(W-wt[n-1],wt,val,n-1),solve(W,wt,val,n-1));
+        }else{
+           return t[n][W]= solve(W,wt,val,n-1);
+        }
     }
-   
 }
 
-// class Solution 
-// { 
-    
-//     //Function to return max value that can be put in knapsack of capacity W.
-//     static int knapSack(int W, int wt[], int val[], int N) 
-//     {        // code here for memoization method by using hashmap
-//      HashMap<String,Integer> map=new HashMap<>();
-//         return Memo(W,wt,val,0,map);
-//     } 
-   
-//  static int Memo(int W,int wt[],int val[],int i, HashMap<String,Integer> map){
-//       if(i==wt.length||W==0) return 0;
 
-//     String key=W+"#"+i;
-
-//      if(map.containsKey(key)){
-//   return map.get(key);
-//      }
-       
-//     if(wt[i]>W){
-//          return Memo(W,wt,val,i+1,map);
-          
-//      }
-// else{
-//   return Math.max(val[i]+Memo(W-wt[i],wt,val,i+1,map),Memo(W,wt,val,i+1,map));
-//   }
-
-//     }
-   
-// }
