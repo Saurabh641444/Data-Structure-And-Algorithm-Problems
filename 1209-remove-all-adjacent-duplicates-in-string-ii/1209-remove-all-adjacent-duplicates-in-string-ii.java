@@ -36,10 +36,11 @@ class Solution {
                 Pair p=new Pair(ch,1,""+ch);
                 st.push(p);
             }
-            while(!st.isEmpty()&& k==st.peek().value){
+            if(!st.isEmpty()&& k==st.peek().value){
                 st.pop();
             }
         }
+        
         
         StringBuilder sb=new StringBuilder();
         while(!st.isEmpty()){
