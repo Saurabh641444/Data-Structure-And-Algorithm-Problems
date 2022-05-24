@@ -12,9 +12,9 @@ class Solution {
                 st.pop();
                  if(st.isEmpty()){
                st.push(i);
-                  }else{
+            }else{
 
-                      int len=i-st.peek();
+         int len=i-st.peek();
        max=Math.max(max,len);
                 }
                 }
