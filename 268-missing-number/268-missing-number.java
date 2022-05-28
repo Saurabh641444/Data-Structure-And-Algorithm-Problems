@@ -1,4 +1,4 @@
-class Solution {
+/*class Solution {
     public int missingNumber(int[] nums) {
       boolean arr[]=new boolean[nums.length+1];
         
@@ -11,5 +11,16 @@ class Solution {
         }
         
         return 0;
+    }
+}*/
+
+class Solution {
+    public int missingNumber(int[] nums) {
+      int miss=nums.length;
+        for(int i=0;i<nums.length;i++){
+            miss=miss^nums[i]^i;
+        }
+        
+        return miss;
     }
 }
