@@ -1,3 +1,4 @@
+// time complexity klogk , k=m+n
 // class Solution {
 //     public void merge(int[] nums1, int m, int[] nums2, int n) {
 //        for(int i=0;i<n;i++){
@@ -8,6 +9,7 @@
 //     }
 // }
 
+//time complexity k=m+n
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
        int p1=m-1;
