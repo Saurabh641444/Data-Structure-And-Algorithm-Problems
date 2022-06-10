@@ -1,4 +1,4 @@
-class Solution {
+/*class Solution {
     public int minBitFlips(int start, int goal) {
         String s=Integer.toBinaryString(start);
         String e=Integer.toBinaryString(goal);
@@ -30,5 +30,12 @@ class Solution {
         }
         
         return count;
+    }
+}*/
+
+class Solution {
+    public int minBitFlips(int start, int goal) {
+  
+       return Integer.bitCount(start^goal);  
     }
 }
