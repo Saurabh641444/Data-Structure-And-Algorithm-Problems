@@ -27,7 +27,7 @@ class Driverclass
 class Solution
 {
     // complete the function
-    public static int sumOfDigits(int n)
+    /*public static int sumOfDigits(int n)
     {
         // add your code here
         int res=0;
@@ -38,6 +38,13 @@ class Solution
         }
         
         return res;
+    }*/
+    
+     public static int sumOfDigits(int n)
+    {
+        // add your code here
+        if(n<=0){ return 0;}
+      return n%10+sumOfDigits(n/10);
     }
 }
 
