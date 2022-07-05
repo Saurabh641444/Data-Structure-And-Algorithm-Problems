@@ -26,7 +26,6 @@
         
     }
 }*/
-
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
         int n=nums.length;
@@ -58,3 +57,35 @@ class Solution {
     }
 }
 
+/*TLE
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+          if(k==1) return nums;
+       ArrayList<Integer> ans=new ArrayList<>();
+	          if(nums.length==1 && k==1){
+	            ans.add(1);
+	            return new int[]{1};
+	        }
+	        PriorityQueue<Integer> pq=new PriorityQueue<>((a,b)->(b-a));
+	    
+                   for(int i=0;i<k;i++){
+                        pq.add(nums[i]);
+                   }
+                 ans.add(pq.peek());
+               pq.remove(nums[0]);
+
+                  for(int i=k;i<nums.length;i++){
+                     pq.add(nums[i]);
+                     ans.add(pq.peek());
+                     pq.remove(nums[i-k+1]);
+                     }
+	        
+	      
+                        int[] res=new int[ans.size()];
+                    for(int z=0;z<ans.size();z++){
+                        res[z]=ans.get(z);
+                    }
+                    	        return res;
+    }
+}
+*/
