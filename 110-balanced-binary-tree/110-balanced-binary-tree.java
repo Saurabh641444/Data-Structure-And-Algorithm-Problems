@@ -13,7 +13,7 @@
  *     }
  * }
  */
-class Solution {
+/*class Solution {
     public boolean isBalanced(TreeNode root) {
         if(root==null){ return true;}
         
@@ -27,5 +27,28 @@ class Solution {
     public int getHeight(TreeNode root){
             if(root==null) return 0;
              return Math.max(getHeight(root.left),getHeight(root.right))+1;
+       }
+}*/
+
+class Solution {
+    public boolean isBalanced(TreeNode root) {
+        if(root==null){ return true;}
+        
+        int checkValue=check(root);
+        
+        if(checkValue==-1) return false;
+        else return true;
+
+        
+    }
+
+    public int check(TreeNode root){
+            if(root==null) return 0;
+        
+            int lh=check(root.left);
+            int rh=check(root.right);
+            if(lh==-1 || rh==-1) return -1;    
+            if(Math.abs(lh-rh)>1) return -1;    
+             return Math.max(lh,rh)+1;
        }
 }
