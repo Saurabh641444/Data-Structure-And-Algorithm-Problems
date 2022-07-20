@@ -39,15 +39,16 @@ class Solution {
                 Pair temp=q.poll();
                 TreeNode node=temp.node;
                 int x=temp.x;
-                if(i==0) first=x;
-                if(i==size-1) last=x;
+                int curr_id=x-min;
+                if(i==0) first=curr_id;
+                if(i==size-1) last=curr_id;
                 
                 if(node.left!=null){
-                    q.add(new Pair(node.left,x*2+1));
+                    q.add(new Pair(node.left,curr_id*2+1));
                 }
                 
                 if(node.right!=null){
-                    q.add(new Pair(node.right,x*2+2));
+                    q.add(new Pair(node.right,curr_id*2+2));
                 }
             }
             
