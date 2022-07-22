@@ -23,7 +23,7 @@ class Solution {
             }else{
                  rhead.next=temp;
                
-             rhead=temp;
+             rhead=rhead.next;
             }
             temp=temp.next;
         }
