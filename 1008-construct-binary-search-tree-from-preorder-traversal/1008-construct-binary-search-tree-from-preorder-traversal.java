@@ -13,6 +13,7 @@
  *     }
  * }
  */
+/*
 class Solution {
     public TreeNode bstFromPreorder(int[] preorder) {
         
@@ -45,4 +46,25 @@ class Solution {
         root.right=   helper(preorder,in,sp+numleft+1,ep,rootIndex+1,ei,hm);     
         return root;
     }
+}*/
+
+class Solution {
+    public TreeNode bstFromPreorder(int[] preorder) {
+        
+       return helper(preorder,Integer.MAX_VALUE,new int[]{0});
+    }
+    
+    private TreeNode helper(int[] preorder,int max,int [] i){
+        
+        if(i[0]==preorder.length || max<preorder[i[0]]){
+            return null;
+        }
+        
+        TreeNode root=new TreeNode(preorder[i[0]++]);
+        root.left=helper(preorder,root.val,i);
+        root.right=helper(preorder,max,i);
+        return root;
+    }
+    
+  
 }
