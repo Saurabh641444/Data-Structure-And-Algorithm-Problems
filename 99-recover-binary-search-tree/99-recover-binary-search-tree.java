@@ -15,47 +15,44 @@
  */
 class Solution {
      // Creating three global pointers
-    TreeNode previous = null;
-    TreeNode first = null;
-    TreeNode second = null;
+    private TreeNode prev ;
+    private TreeNode first ;
+    private TreeNode last ;
+    private TreeNode middle;
     
     public void recoverTree(TreeNode root) {
-        // Finding the two swapped nodes
-        solve(root);
+       first=last=middle=null;
+        TreeNode prev =new TreeNode(Integer.MIN_VALUE);
+        inorder(root);
         
-        //Swaping the value of nodes
-        int temp = first.val;
-        first.val = second.val;
-        second.val = temp;
-    }
-     //New Function to find the two nodes
-    public void solve(TreeNode root){
-        
-        if(root == null){
-            return;
+        if(first!=null && last!=null){
+            int t=first.val;
+            first.val=last.val;
+            last.val=t;
+        }else if(first!=null && middle!=null){
+            int t=first.val;
+            first.val=middle.val;
+            middle.val=t;
         }
+    }
+    
+    private void inorder(TreeNode root){
+        if(root==null) return;
         
-        //Doing inorder traversal i.e, sarting from left then right
-        solve(root.left);
+        inorder(root.left);
         
-        // If current node is smaller than previous, then previous node is invalid
-        if(previous != null && root.val < previous.val){
+        if(prev!=null && root.val<prev.val){
             
-            //Storing previous node
-            if(first == null){
-                first = previous;
+            if(first==null){
+                first=prev;
+                middle=root;
+            }else{
+                last=root;
             }
-            
-            //If both nodes are adjacent, save the current node in that case
-            second = root;
-            
         }
         
-        //Making current node as previous node
-        previous = root;
-        
-        //Moving to right sub-tree
-        solve(root.right);
-        
+        prev=root;
+        inorder(root.right);
     }
+   
 }
