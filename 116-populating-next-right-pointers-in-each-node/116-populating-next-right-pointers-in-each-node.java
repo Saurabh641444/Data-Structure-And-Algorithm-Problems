@@ -20,7 +20,7 @@ class Node {
     }
 };
 */
-
+/*
 class Solution {
     public Node connect(Node root) {
          if(root==null) return null;
@@ -53,4 +53,23 @@ class Solution {
         
         return root;
     }
+}*/
+
+// Recursive Approach
+
+class Solution {
+    public Node connect(Node root) {
+         if(root==null) return null;
+         
+        dfs(root.left,root.right);
+        return root;
+    }
+
+     private void dfs(Node l,Node r){
+          if(l==null || r==null) return;
+         l.next=r;
+          dfs(l.left,l.right);
+          dfs(r.left,r.right);
+           dfs(l.right,r.left);
+      }
 }
