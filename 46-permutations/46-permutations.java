@@ -1,8 +1,8 @@
-class Solution {
+/*class Solution {
     List<List<Integer>> ans=new ArrayList<>();
    
     public List<List<Integer>> permute(int[] nums) {
-         // List<Integer> ip=new ArrayList<>();
+       
      List<Integer> op=new ArrayList<>();
        
         solve(nums,op);
@@ -24,5 +24,43 @@ class Solution {
         }
             
         
+    }
+}
+*/
+
+// Approach - 2
+
+class Solution {
+ 
+    public List<List<Integer>> permute(int[] nums) {
+         List<List<Integer>> ans=new ArrayList<>(); 
+         recurPermute(0,nums,ans);
+         return ans;
+    }
+
+    private void  recurPermute(int index,int[] nums, List<List<Integer>> ans)      {
+        if(nums.length==index){ 
+             List<Integer> ds=new ArrayList<>();
+             for(int i=0;i<nums.length;i++){
+                 ds.add(nums[i]);
+                 }
+            ans.add(new ArrayList<>(ds));
+            return;
+        }
+       
+        for(int i=index;i<nums.length;i++){
+            
+            swap(i,index,nums);
+            recurPermute(index+1,nums,ans);
+            swap(i,index,nums);
+         
+        }
+             
+    }
+
+   private void swap(int x,int y,int nums[]){
+        int temp=nums[x];
+        nums[x]=nums[y];
+        nums[y]=temp;
     }
 }
