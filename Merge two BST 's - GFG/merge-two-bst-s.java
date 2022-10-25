@@ -129,8 +129,8 @@ class Solution
         ArrayList<Integer> arr1=new ArrayList<>();
         ArrayList<Integer> arr2=new ArrayList<>();
         
-        dfs(root1, arr1);
-        dfs(root2,arr2);
+        MorrisTraversal(root1, arr1);
+        MorrisTraversal(root2,arr2);
         
         int i=0;
         int j=0;
@@ -162,6 +162,36 @@ class Solution
 
         }
         return ans;
+    }
+    
+    void MorrisTraversal(Node root,ArrayList<Integer> arr){
+      
+      if(root==null) return;
+      
+      Node curr=root;
+      
+      while(curr!=null){
+          if(curr.left==null){
+              arr.add(curr.data);
+              curr=curr.right;
+          }else{
+              Node temp=curr.left;
+              
+              while(temp.right!=null && curr!=temp.right){
+                  temp=temp.right;
+              }
+              
+              if(temp.right==null){
+                  temp.right=curr;
+                  curr=curr.left;
+              }else {
+                  arr.add(curr.data);
+                  temp.right=null;
+                  curr=curr.right;
+
+              }
+          }
+      }
     }
     
     void dfs(Node root,ArrayList<Integer> arr){
