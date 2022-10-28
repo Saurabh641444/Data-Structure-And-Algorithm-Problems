@@ -40,13 +40,24 @@ class Solution
         // your code here
         int mod=1_000_000_007;
         int dp[]=new int[n+1];
-        dp[0]=1;
-        dp[1]=1;
+        // dp[0]=1;
+        // dp[1]=1;
+        
+        // for(int i=2;i<=n;i++){
+        //     dp[i]=(dp[i-1]+dp[i-2])%mod;
+        // }
+        // return dp[n]%mod;
+        
+        int prev2=1;
+        int prev=1;
         
         for(int i=2;i<=n;i++){
-            dp[i]=(dp[i-1]+dp[i-2])%mod;
+            int curr=(prev+prev2)%mod;
+           
+            prev2=prev;
+             prev=curr;
         }
-        return dp[n]%mod;
+        return prev%mod;
     }
     
     int solve(int n,int mod){
