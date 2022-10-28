@@ -1,4 +1,4 @@
-class Solution {
+/*class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         List<List<String>> ans=new ArrayList<>();
         
@@ -26,5 +26,31 @@ class Solution {
         for(List<String> val:hm.values()) ans.add(val);
         
         return ans;
+    }
+}*/
+
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> ans=new ArrayList<>();
+        
+        HashMap<String,List<String>> 
+            hm=new HashMap<>();
+        
+        for(String str:strs){
+            char arr[]=str.toCharArray();
+            Arrays.sort(arr);
+            String s=new String(arr);
+            if(hm.containsKey(s)==false){
+                hm.put(s,new ArrayList<>());
+                hm.get(s).add(str);
+            }else {
+                hm.get(s).add(str);
+                
+            }
+        }
+        
+       
+        
+        return new ArrayList<>(hm.values());
     }
 }
