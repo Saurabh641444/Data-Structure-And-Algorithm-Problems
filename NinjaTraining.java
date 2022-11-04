@@ -108,7 +108,7 @@ int ninjaTraining(int[][] arr,int n){
         
         if(last!=task){
         
-           int point=arr[day][task]+dp[day+1][task];
+           int point=arr[day][task]+dp[day-1][task];
           
           dp[day][task]=Math.max(point,dp[day][task];
         }
