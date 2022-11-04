@@ -123,3 +123,36 @@ int ninjaTraining(int[][] arr,int n){
   return dp[n-1][3];
   
 }
+
+                                 /* Space Optimization*/
+                                 
+ public class Solution {
+    public static int ninjaTraining(int n, int arr[][]) {
+
+        // Write your code here..
+        int[] prev=new int[4];
+   
+   prev[0]=Math.max(arr[0][1],arr[0][2]);
+   prev[1]=Math.max(arr[0][0],arr[0][2]);
+   prev[2]=Math.max(arr[0][0],arr[0][1]);
+   prev[3]=Math.max(arr[0][0],Math.max(arr[0][1],arr[0][2]));
+   
+   for(int day=1;day<n;day++){
+         int temp[]=new int[4];
+
+         for(int last=0;last<4;last++){
+         temp[last]=0;
+            for(int task=0;task<3;task++){
+               if(task!=last){
+                    temp[last]=Math.max(temp[last],arr[day][task]+prev[task]);
+                  }
+              }
+         }
+        prev=temp;
+   }
+   
+      return prev[3];
+        
+    }
+
+}
