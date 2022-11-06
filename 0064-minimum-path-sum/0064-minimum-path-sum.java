@@ -3,7 +3,32 @@ class Solution {
         int m=grid.length;
         int n=grid[0].length;
         int min=Integer.MAX_VALUE;
-        int[][] dp=new int[m][n];
+        
+        int[] prev=new int[n];
+        
+        for(int i=0;i<m;i++){
+            int temp[]=new int[n];
+            
+            for(int j=0;j<n;j++){
+                if(i==0 && j==0){
+                    temp[j]=grid[i][j];
+                }else{
+                    int up=Integer.MAX_VALUE;
+                    int left=Integer.MAX_VALUE;
+                    
+                    if(i>0) up=prev[j];
+                    
+                    if(j>0) left=temp[j-1];
+                    
+                    temp[j]=grid[i][j]+Math.min(up,left);
+                }
+            }
+            prev=temp;
+        }
+        
+        return prev[n-1];
+        
+   /*     int[][] dp=new int[m][n];
         
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
@@ -22,7 +47,7 @@ class Solution {
             }
         }
         
-        return dp[m-1][n-1];
+        return dp[m-1][n-1];*/
         // for(int[] a:dp){
         //     Arrays.fill(a,-1);
         // }
