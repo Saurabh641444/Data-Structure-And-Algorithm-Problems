@@ -19,6 +19,10 @@ class Solution {
               
             }
             front=curr.clone();
+            /*
+            Note for JAVA folks, if you're trying O(N) space solution and not getting the right answer that is because of this line in front = cur; because in Java, simple assignment of one array to another makes a shallow copy of the assigned array viz. both the arrays get affected if there is any change happened in any one of the array. So the simple solution in java is:
+
+front = cur.clone(); // creates deep copy of the array in Java*/
         }
         
         return front[0];
