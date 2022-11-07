@@ -4,14 +4,32 @@ class Solution {
         int min=Integer.MAX_VALUE;
         int dp[][]=new int[n][n];
         
-        for(int [] a:dp){
-            Arrays.fill(a,-1);
-        }
+        // for(int [] a:dp){
+        //     Arrays.fill(a,-1);
+        // }
         
         for(int i=0;i<matrix.length;i++){
-         min=Math.min(min,dfs(matrix,n,0,i,Integer.MAX_VALUE,dp));
+         // min=Math.min(min,dfs(matrix,n,0,i,Integer.MAX_VALUE,dp));
+            dp[0][i]=matrix[0][i];
         }   
         
+        for(int row=1;row<n;row++){
+            for(int col=0;col<n;col++){
+                
+        int left=Integer.MAX_VALUE;
+            if(col>=1) left= dp[row-1][col-1];
+        int mid=dp[row-1][col];
+        int right=Integer.MAX_VALUE;
+            if(col+1<n) right=dp[row-1][col+1];
+        // System.out.println(left+" "+mid+" "+right);
+         dp[row][col]=matrix[row][col]+Math.min(left,Math.min(right,mid));
+       
+            }
+        }
+        
+        for(int i=0;i<n;i++){
+            min=Math.min(min,dp[n-1][i]);
+        }
         return min;
     }
     
