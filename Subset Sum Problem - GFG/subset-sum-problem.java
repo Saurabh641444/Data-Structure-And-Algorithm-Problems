@@ -39,13 +39,41 @@ class Solution{
     static Boolean isSubsetSum(int N, int arr[], int sum){
         // code here
         
-        int dp[][]=new int[N+1][sum+1];
+        boolean[][] dp=new boolean[N+1][sum+1];
         
-        for(int a[]:dp){
-            Arrays.fill(a,-1);
+        for(int i=0;i<N;i++){
+            dp[i][0]=true;
+        }
+        if(arr[0]<=sum)
+            dp[0][arr[0]]=true;
+        
+        for(int ind=1;ind<N;ind++){
+            for(int target=1;target<=sum;target++){
+                
+              
+                boolean take=false;
+                
+              
+              boolean   notTake=dp[ind-1][target];
+                
+                
+                if(target>=arr[ind] ){
+                   take=dp[ind-1][target-arr[ind]];
+                  }
+        
+                 dp[ind][target]= notTake || take; 
+                
+            }
         }
         
-        return isSubsetSumHelper(arr,N-1,sum,dp);
+        return dp[N-1][sum];
+        // int dp[][]=new int[N+1][sum+1];
+        
+        // for(int a[]:dp){
+        //     Arrays.fill(a,-1);
+        // }
+        
+        // return isSubsetSumHelper(arr,N-1,sum,dp);
     }
     
     static boolean isSubsetSumHelper(int arr[],int i, int target,int dp[][]){
