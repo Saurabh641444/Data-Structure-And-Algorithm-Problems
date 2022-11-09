@@ -42,11 +42,31 @@ class Solution{
         
         int target=TotalSum/2;
         
-        int dp[][]=new int[N+1][target+1];
+        boolean dp[][]=new boolean[N+1][target+1];
         
-        for(int[] a:dp) Arrays.fill(a,-1);
+        for(int i=0;i<N;i++){
+            dp[i][0]=true;
+        }
         
-        return helper(arr,N-1, target,dp)? 1:0;
+        if(arr[0]<=target)
+           dp[0][arr[0]]=true;
+        
+        for(int ind=1;ind<N;ind++){
+            for(int sum=0;sum<target+1;sum++){
+             boolean notTake=dp[ind-1][sum];
+            boolean take=false;
+        
+        if(sum>=arr[ind])
+          take= dp[ind-1][sum-arr[ind]];
+           
+       dp[ind][sum]= notTake || take; 
+            }
+        }
+        
+        return dp[N-1][target]?1:0;
+        // for(int[] a:dp) Arrays.fill(a,-1);
+        
+        // return helper(arr,N-1, target,dp)? 1:0;
     }
     
     static boolean helper(int[] arr,int n,int target, int dp[][]){
