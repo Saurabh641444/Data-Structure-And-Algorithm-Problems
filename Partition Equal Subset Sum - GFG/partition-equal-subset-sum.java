@@ -42,7 +42,32 @@ class Solution{
         
         int target=TotalSum/2;
         
-        boolean dp[][]=new boolean[N+1][target+1];
+        boolean [] prev=new boolean[target+1];
+        
+        
+        prev[0]=true;
+        
+        
+        if(arr[0]<=target)
+           prev[arr[0]]=true;
+        
+        for(int ind=1;ind<N;ind++){
+            boolean [] temp=new boolean[target+1];
+          for(int sum=0;sum<target+1;sum++){
+             boolean notTake=prev[sum];
+             boolean take=false;
+        
+             if(sum>=arr[ind])
+                take= prev[sum-arr[ind]];
+           
+                temp[sum]= notTake || take; 
+            }
+            prev=temp.clone();
+        }
+        
+        return prev[target]?1:0;
+        
+       /* boolean dp[][]=new boolean[N+1][target+1];
         
         for(int i=0;i<N;i++){
             dp[i][0]=true;
@@ -63,7 +88,7 @@ class Solution{
             }
         }
         
-        return dp[N-1][target]?1:0;
+        return dp[N-1][target]?1:0;*/
         // for(int[] a:dp) Arrays.fill(a,-1);
         
         // return helper(arr,N-1, target,dp)? 1:0;
