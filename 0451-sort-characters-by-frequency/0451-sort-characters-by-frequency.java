@@ -7,23 +7,39 @@ class Solution {
             hm.put(s.charAt(i),hm.getOrDefault(s.charAt(i),0)+1);
         }
         
-        PriorityQueue<Pair> pq=new PriorityQueue<>(new sortComparator());
+//         PriorityQueue<Pair> pq=new PriorityQueue<>(new sortComparator());
         
-        for(Map.Entry<Character,Integer> e:hm.entrySet()){
-            pq.add(new Pair(e.getKey(),e.getValue()));
+//         for(Map.Entry<Character,Integer> e:hm.entrySet()){
+//             pq.add(new Pair(e.getKey(),e.getValue()));
+//         }
+        
+//         String ans="";
+        
+//         while(pq.size()>0){
+//         Pair temp=pq.poll();
+//         char ch=temp.getKey();
+//         int k=temp.getVal();
+//         while(k-->0){
+//             ans=ans+""+ch;
+//         }
+//         }
+        
+//         return ans;
+        
+        PriorityQueue<Character> pq=new PriorityQueue<>((a,b)->hm.get(b)-hm.get(a));
+        
+        for(char c:hm.keySet()){
+            pq.add(c);
         }
-        
         String ans="";
-        
         while(pq.size()>0){
-        Pair temp=pq.poll();
-        char ch=temp.getKey();
-        int k=temp.getVal();
-        while(k-->0){
-            ans=ans+""+ch;
+            char ch=pq.poll();
+            int k=hm.get(ch);
+            
+            while(k-->0){
+                ans=ans+""+ch;
+            }
         }
-        }
-        
         return ans;
     }
 }
