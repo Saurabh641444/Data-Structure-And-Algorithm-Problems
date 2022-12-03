@@ -1,5 +1,5 @@
 class Solution {
-    public String frequencySort(String s) {
+    /*public String frequencySort(String s) {
        
        HashMap<Character,Integer> hm=new HashMap<>();
         
@@ -41,35 +41,74 @@ class Solution {
             }
         }
         return ans;
-    }
-}
-
-class Pair{
-    char key;
-    int val;
+    }*/
     
-   Pair(char key,int val){
-       this.key=key;
-       this.val=val;
-   }
-    
-    int getVal(){
-        return val;
-    }
-    
-    char getKey(){
-        return key;
-    }
-}
-
-class sortComparator implements Comparator<Pair>{
-    
-    public int compare(Pair a,Pair b){
-        if(a.getVal()>b.getVal()){
-            return -1;
-        }else if(a.getVal()<b.getVal()){
-            return 1;
+    class Pair{
+        char ch;
+        int val;
+        
+        Pair(char ch){
+            this.ch=ch;
         }
-        return 0;
+        
+        Pair(char ch,int val){
+            this.ch=ch;
+            this.val=val;
+        }
+    }
+    
+     public String frequencySort(String s) {
+       Pair[] bucket=new Pair[123];
+         
+         for(int i=0;i<123;i++){
+             bucket[i]=new Pair((char)i);
+         }
+     
+         for(char ch:s.toCharArray()){
+             bucket[ch].val+=1;
+         }
+         
+         Arrays.sort(bucket,(a,b)->b.val-a.val);
+         
+         StringBuilder ans=new StringBuilder();
+         
+         for(Pair temp:bucket){
+             char ch=temp.ch;
+             int k=temp.val;
+             
+             while(k-->0) ans.append(""+ch+"");
+         }
+         
+         return ans.toString();
     }
 }
+
+// class Pair{
+//     char key;
+//     int val;
+    
+//    Pair(char key,int val){
+//        this.key=key;
+//        this.val=val;
+//    }
+    
+//     int getVal(){
+//         return val;
+//     }
+    
+//     char getKey(){
+//         return key;
+//     }
+// }
+
+// class sortComparator implements Comparator<Pair>{
+    
+//     public int compare(Pair a,Pair b){
+//         if(a.getVal()>b.getVal()){
+//             return -1;
+//         }else if(a.getVal()<b.getVal()){
+//             return 1;
+//         }
+//         return 0;
+//     }
+// }
