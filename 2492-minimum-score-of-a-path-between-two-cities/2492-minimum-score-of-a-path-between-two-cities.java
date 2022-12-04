@@ -1,46 +1,48 @@
 class Solution {
-   
+    int [] parent;
+    int [] minDist;
+    
+    private int findParent(int x){
+        
+       while(x!=parent[x]){
+           int pa=parent[x];
+            int ga=parent[pa];
+            parent[x]=ga;
+            x=pa; 
+          }
+        
+        return x;
+    }
+    
     public int minScore(int n, int[][] roads) {
+        parent=new int[n+1];
+        minDist=new int[n+1];
         
-       ArrayList<Integer> adj[]=new ArrayList[n];
-       ArrayList<Integer> cost[]=new ArrayList[n];
+        Arrays.fill(minDist,Integer.MAX_VALUE);
         
-        for(int i=0;i<n;i++){
-            adj[i]=new ArrayList<Integer>();
-            cost[i]=new ArrayList<Integer>();
+        for(int i=1;i<=n;i++){
+            parent[i]=i;
         }
         
-        for(int road[]:roads){
-            int u=road[0]-1,v=road[1]-1,w=road[2];
+        for(int [] road:roads){
+            int u=road[0];
+            int v=road[1];
+            int w=road[2];
             
-            adj[u].add(v);
-            adj[v].add(u);
-            cost[u].add(w);
-            cost[v].add(w);
-        }
-        
-        Queue<Integer> q=new LinkedList<>();
-        q.add(0);
-        boolean vis[]=new boolean[n];
-        vis[0]=true;
-        int min=Integer.MAX_VALUE;
-        
-        while(!q.isEmpty()){
-            int u=q.poll();
+            int parent_x=findParent(u);
+            int parent_y=findParent(v);
             
-            for(int v:adj[u]){
-                if(!vis[v]){
-                    vis[v]=true;
-                    q.add(v);
-                }
-            }
-            
-            for(int w:cost[u]){
-                min=Math.min(min,w);
+            if(parent_x==parent_y){
+                minDist[parent_x]=Math.min(w,minDist[parent_x]);
+            }else{
+                parent[parent_y]=parent_x;
+                minDist[parent_x]=Math.min(minDist[parent_x],Math.min(w,minDist[parent_y]));
             }
         }
         
-        return vis[n-1]?min:-1;
+        int parent_n=findParent(n);
+        return minDist[parent_n];
+    
     }
     
    
