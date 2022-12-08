@@ -23,13 +23,15 @@ class Solution {
         ArrayList<Integer> tree2=new ArrayList<>();
         dfs(root2,tree2);
         
-        if(tree1.size()!=tree2.size()) return false;
+        return tree1.equals(tree2);
         
-        for(int i=0;i<tree1.size();i++){
-            if(tree1.get(i)!=tree2.get(i)) return false;
-        }
+//         if(tree1.size()!=tree2.size()) return false;
         
-        return true;
+//         for(int i=0;i<tree1.size();i++){
+//             if(tree1.get(i)!=tree2.get(i)) return false;
+//         }
+        
+//         return true;
         
     }
     
