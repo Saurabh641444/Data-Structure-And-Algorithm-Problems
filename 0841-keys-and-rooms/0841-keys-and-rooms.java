@@ -4,7 +4,27 @@ class Solution {
         
         boolean vis[]=new boolean[n];
         
-        dfs(rooms,0,vis);
+        // dfs(rooms,0,vis);
+        
+        Queue<Integer> q=new LinkedList<>();
+        
+        q.add(0);
+        
+        while(!q.isEmpty()){
+            int size=q.size();
+            
+            while(size-->0){
+                int temp=q.poll();
+                vis[temp]=true;
+                
+                for(int i:rooms.get(temp)){
+                    if(vis[i]==false){
+                      q.add(i);
+                      }
+                }
+                
+            }
+        }
         
         for(int i=0;i<n;i++){
             if(!vis[i]) return false;
