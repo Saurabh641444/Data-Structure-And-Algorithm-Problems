@@ -14,12 +14,36 @@ class Solution {
         
         for(int i=1;i<=n;i++){
             if(color[i]==-1){
-                if(!dfs(adj,i,0,color)) return false;
+                if(!bfs(adj,i,color)) return false;
             }
         }
         
         return true;
         
+    }
+    
+    private boolean bfs(Map<Integer,ArrayList<Integer>> adj,int curr,int[] color){
+        Queue<Integer> q=new LinkedList<>();
+        q.offer(curr);
+        
+        color[curr]=0;
+        
+        while(!q.isEmpty()){
+            int node=q.poll();
+            
+            if(adj.get(node)==null) continue;
+            
+            for(int x:adj.get(node)){
+                if(color[x]==color[node]) return false;
+                
+                if(color[x]==-1){
+                    color[x]=1-color[node];
+                    q.add(x);
+                }
+            }
+        }
+        
+       return true; 
     }
     
     private boolean dfs(Map<Integer,ArrayList<Integer>> adj,int curr,int nodeColor,int[] color){
